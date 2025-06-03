@@ -3,7 +3,7 @@ import { loadRemoteModule } from '@angular-architects/module-federation';
 
 
 @Component({
-  template: `<div id="angular-wrapper-component">
+  template: `<div>
     Angular Wrapper Component
     <div id="react-list-root"></div>
   </div>`,
