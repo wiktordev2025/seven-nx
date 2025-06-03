@@ -1,4 +1,9 @@
-export function App({ title, onClick }: { title?: string, onClick?: () => void }) {
+type AppProps = {
+  title?: string;
+  userData?: { name: string; age?: number };
+  onClick?: () => void;
+}
+export function App({ title, userData, onClick }: AppProps) {
   const handleOnCLick = () => {
     console.log('React onClick.');
     onClick?.();
@@ -7,6 +12,8 @@ export function App({ title, onClick }: { title?: string, onClick?: () => void }
     <div className="text-blue-500 p-4 cursor-pointer" onClick={handleOnCLick}>
       Hi from React Remote 👋
       <div>Title props: {title}</div>
+      <div>User: <span>{userData?.name}</span></div>
+      <div>Age: <span>{userData?.age}</span></div>
     </div>
   );
 }
