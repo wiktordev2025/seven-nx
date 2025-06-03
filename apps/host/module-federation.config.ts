@@ -14,7 +14,10 @@ const config: ModuleFederationConfig = {
    * declare module 'my-external-remote';
    *
    */
-  remotes: ['list'],
+  remotes: [
+    'list', // Angular remote
+    ['reactList', 'http://localhost:4202'], // React remote with URL
+  ],
 };
 
 /**
