@@ -1,41 +1,28 @@
 import { AfterContentInit, Component } from '@angular/core';
-// import { loadRemote } from '@module-federation/enhanced/runtime';
-import { importRemote } from 'module-federation-import-remote';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+
 
 @Component({
-  template: '<div id="react-list-root"></div>',
+  template: `<div id="angular-wrapper-component">
+    Angular Wrapper Component
+    <div id="react-list-root"></div>
+  </div>`,
 })
 export class WrapperComponent implements AfterContentInit {
-  // async ngAfterContentInit(): Promise<void> {
-  //   console.log('WrapperComponent ngAfterContentInit');
-  //   try {
-  //     await loadRemote('reactList/web-components');
-  //     console.debug('reactList loaded');
-  //   } catch (err) {
-  //     console.error('error loading reactList:', err);
-  //   }
-  // }
+  async ngAfterContentInit() {
+    const module = await loadRemoteModule({
+      remoteEntry: 'http://localhost:4202/remoteEntry.js',
+      remoteName: 'reactList',
+      exposedModule: './mountRemote',
+    });
 
-  unmount: (s: string) => void = () => {};
+    const ReactApp = await loadRemoteModule({
+      remoteEntry: 'http://localhost:4202/remoteEntry.js',
+      remoteName: 'reactList',
+      exposedModule: './ReactApp',
+    });
 
-  ngAfterContentInit() {
-    importRemote<{ inject: (s: string) => void; unmount: (s: string) => void }>(
-      {
-        url: 'http://localhost:3002',
-        scope: 'reactList',
-        module: './injectApp',
-      }
-    )
-      .then(({ inject, unmount }) => {
-        inject('react-list-root');
-        this.unmount = unmount;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    module.mountReactComponent(ReactApp.default, 'react-list-root');
   }
 
-  ngOnDestroy() {
-    this.unmount('react-list-root');
-  }
 }

@@ -58,6 +58,7 @@
     "typescript-eslint": "^8.19.0"
   },
   "dependencies": {
+    "@angular-architects/module-federation": "^20.0.0",
     "@angular/common": "~19.2.0",
     "@angular/compiler": "~19.2.0",
     "@angular/core": "~19.2.0",

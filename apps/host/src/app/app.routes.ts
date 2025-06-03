@@ -8,18 +8,18 @@ export const appRoutes: Route[] = [
   //   loadChildren: () => import('list/Routes').then((m) => m!.remoteRoutes),
   // },
   // {
-  //   path: 'reactList',
+  //   path: 'react',
   //   loadChildren: () => import('reactList/Module').then((m) => {
   //     console.log('m: ', m);
   //     return m!.default || m;
   //   }),
   // },
   {
-    path: '',
-    component: NxWelcomeComponent,
+    path: 'react',
+    component: WrapperComponent,
   },
   {
-    path: 'react',
-    component: WrapperComponent
+    path: '',
+    component: NxWelcomeComponent,
   },
 ];
