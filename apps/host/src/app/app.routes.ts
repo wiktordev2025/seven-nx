@@ -12,7 +12,7 @@ export const appRoutes: Route[] = [
     component: NxWelcomeComponent,
   },
   {
-    path: 'react-app',
+    path: 'react',
     component: WrapperComponent
   },
 ];

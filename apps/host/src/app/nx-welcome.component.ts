@@ -431,7 +431,7 @@ import { CommonModule } from '@angular/common';
         <!--  WELCOME  -->
         <div id="welcome">
           <h1>
-            Welcome host 👋
+            I am Angular host 👋
           </h1>
         </div>
       </div>
