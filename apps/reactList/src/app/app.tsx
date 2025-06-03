@@ -1,9 +1,7 @@
-import '../styles.css';
-
 export function App() {
   return (
-    <div>
-      👋 Hi from React List App! 👋
+    <div className="text-blue-500 p-4">
+      Hi from React Remote 👋
     </div>
   );
 }

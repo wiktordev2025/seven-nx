@@ -15,8 +15,8 @@ const config: ModuleFederationConfig = {
    *
    */
   remotes: [
-    'list', // Angular remote
-    ['reactList', 'http://localhost:4202'], // React remote with URL
+    // 'list', // Angular remote
+    ['reactList', 'http://localhost:4202/remoteEntry.js'], // React remote with URL
   ],
 };
 

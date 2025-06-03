@@ -4,7 +4,6 @@ const config: ModuleFederationConfig = {
   name: 'reactList',
   exposes: {
     './Module': './src/remote-entry.ts',
-    './web-components': './src/bootstrap.tsx'
   },
 };
 
