@@ -1,6 +1,5 @@
-import { AfterContentInit, Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-
 
 @Component({
   template: `<div>
@@ -8,8 +7,11 @@ import { loadRemoteModule } from '@angular-architects/module-federation';
     <div id="react-list-root"></div>
   </div>`,
 })
-export class WrapperComponent implements AfterContentInit {
-  async ngAfterContentInit() {
+export class WrapperComponent implements OnInit {
+  @Input() title: string = 'Default Title from My Host Angular';
+  @Input() someOtherData: any = { name: 'John', age: 30 };
+
+  async ngOnInit() {
     const module = await loadRemoteModule({
       remoteEntry: 'http://localhost:4202/remoteEntry.js',
       remoteName: 'reactList',
@@ -22,7 +24,11 @@ export class WrapperComponent implements AfterContentInit {
       exposedModule: './ReactApp',
     });
 
-    module.mountReactComponent(ReactApp.default, 'react-list-root');
-  }
+    const propsFromAngular = {
+      title: this.title,
+      userData: this.someOtherData
+    };
 
+    module.mountReactComponent(ReactApp.default, 'react-list-root', propsFromAngular);
+  }
 }

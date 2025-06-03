@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 
-export function mountReactComponent(Component: React.ComponentType, elementId: string) {
+export function mountReactComponent(Component: React.ComponentType<any>, elementId: string, props: any = {}) {
   const container = document.getElementById(elementId);
   if (container) {
-    const root = ReactDOM.createRoot(container);
-    root.render(<Component />);
+    const root = createRoot(container);
+    root.render(React.createElement(Component, props));
   }
 }
