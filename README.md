@@ -31,18 +31,17 @@ pnpm nx build carter //works fine
 pnpm nx serve host //fails when "host" tries to build it - rspack error
 ```
 2. `import { withModuleFederation } from '@nx/angular/module-federation';` expects remoteEntry.mjs and not .js, and its config interface does not accept "filename" property where we could change it.
-Workaround - resort to native webpack (and rspack) module federation plugins, and not from @nx. It consumed about 70% of the whole task duration.
-
-3. `pnpm nx serve host` when working - it uses cached builds of its remotes, which speeds up development
-4. I dropped `implicitDependencies` from "host" project.json because of issues above
-5. @nx ":remote" app generators work only within the same framework, see: https://github.com/nrwl/nx/issues/19222#issuecomment-1756862778
+Workaround - use native webpack (and rspack) module federation plugins, and not the ones from @nx.
+3. @nx ":remote" app generators work only within the same framework, see: https://github.com/nrwl/nx/issues/19222#issuecomment-1756862778
+4. I dropped `implicitDependencies` from "host" project.json because of the issues above
+5. `pnpm nx serve host` when working - it uses cached builds of its remotes, which speeds up development
 
 
 NX MFE plugin problems caused a big delay - I tested different integrations:
 - angular host + angular remote (worked out of the box)
 - react host + react remote (worked out of th box)
 - rspack instead of webpack - same issues whn using NX MFE plugin
-- vite instead of webpack - it should work, but it's MFE plugin is quite young - will test it in the future
+- vite instead of webpack - it should work, but its MFE plugin is quite young - will test it in the future
 
 
 ### Technical Decisions Summary
