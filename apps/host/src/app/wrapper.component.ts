@@ -12,7 +12,7 @@ import { createRoot, Root } from 'react-dom/client';
 @Component({
   template: `
     <div>
-      Angular Wrapper Component
+      Angular Wrapper Component around React Component
       <div #reactRoot></div>
     </div>
   `,
@@ -30,8 +30,6 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
 
     try {
       const module = await import('carter/Module');
-      // const module = await import('reactList/ReactApp');
-      console.log('Importing React module:', module);
 
       const propsFromAngular = {
         title: this.title,
