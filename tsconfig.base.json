@@ -15,10 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-//      "list/Routes": ["apps/list/src/app/remote-entry/entry.routes.ts"],
-//      "reactList/Module": ["apps/reactList/src/remote-entry.ts"],
-      "reactList/ReactApp": ["apps/reactList/src/app/app.tsx"],
       "@my-types/reactList/*": ["apps/reactList/*"],
+      "@my-types/list/*": ["apps/list/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
