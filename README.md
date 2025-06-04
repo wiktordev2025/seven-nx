@@ -43,7 +43,7 @@ NX MFE plugin problems caused a big delay - tested different integrations:
 - react host + react remote (worked out of th box)
 - rspack instead of webpack - same issues whn using NX MFE plugin
 - vite instead of webpack - it should work, but its MFE plugin is quite young - will test it in the future
-
+- "loadRemoteModule" from '@angular-architects/module-federation'; - it works, but defeats the purpose of NX figuring out remote urls
 
 ### Technical Decisions Summary
 Given limited time, main focus was on nx monorepo and MFE functionality.

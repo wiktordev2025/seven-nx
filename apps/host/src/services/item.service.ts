@@ -38,7 +38,7 @@ export class ItemService {
       this.itemsSubject.next(this.originalItems);
       return;
     }
-    const filtered = this.originalItems.filter(i => i.email.includes(term));
+    const filtered = this.originalItems.filter(i => i.email?.toLowerCase().includes(term?.toLowerCase()));
     this.itemsSubject.next(filtered);
   }
 }

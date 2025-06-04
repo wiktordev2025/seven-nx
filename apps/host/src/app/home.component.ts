@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-nx-welcome',
+  selector: 'app-home',
   imports: [CommonModule],
   template: `
     <div id="welcome">
@@ -14,4 +14,4 @@ import { CommonModule } from '@angular/common';
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class NxWelcomeComponent {}
+export class HomeComponent {}
