@@ -1,4 +1,6 @@
 ## sevenNx
+Monorepo POC of Angular hosting React, using Nx and Module Federation.
+
 **Prerequisites:**
 - Node version specified in [.nvmrc](./.nvmrc)
 - Pnpm Package manager version specified in [`package.json > packageManager`](./package.json) (recommendation -> corepack)
@@ -34,7 +36,6 @@ pnpm nx serve host //fails when "host" tries to build it - rspack error
 Workaround - use native webpack (and rspack) module federation plugins, and not the ones from @nx.
 3. @nx ":remote" app generators work only within the same framework, see: https://github.com/nrwl/nx/issues/19222#issuecomment-1756862778
 4. I dropped `implicitDependencies` from "host" project.json because of the issues above
-5. `pnpm nx serve host` when working - it uses cached builds of its remotes, which speeds up development
 
 
 NX MFE plugin problems caused a big delay - I tested different integrations:
