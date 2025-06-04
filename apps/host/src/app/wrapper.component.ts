@@ -3,7 +3,7 @@ import {
   AfterViewInit,
   OnDestroy,
   ViewChild,
-  ElementRef, Input,
+  ElementRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../services/item.service';
@@ -23,11 +23,7 @@ import {FormsModule} from '@angular/forms';
 })
 export class WrapperComponent implements AfterViewInit, OnDestroy {
   filterTerm = '';
-  title = 'Default Title from My Host Angularr';
-  someOtherData: any = { name: 'Daisy', age: 20 };
-  onClickHandler?: () => void = () => {
-    console.log('Default Angular click handler triggered.');
-  };
+  title = 'Host Angular title';
 
   @ViewChild('reactRoot', { static: false }) containerRef!: ElementRef;
 
@@ -37,24 +33,24 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   private sub?: Subscription;
-  private mod?: any;
 
   async ngAfterViewInit() {
     const container = this.containerRef.nativeElement;
-    this.mod = await import('carter/Module');
+    const reactModule = await import('carter/Module');
     await this.itemService.fetchItems();
 
     const propsFromAngular = {
       title: this.title,
-      userData: this.someOtherData,
-      onClick: this.onClickHandler,
+      onNext: () => this.itemService.nextPage(),
+      onPrev: () => this.itemService.prevPage(),
     };
 
     this.sub = this.itemService.items$.subscribe(items => {
-      console.log('Items received:', items);
+      console.log('Angular items received:', items);
+
       this.reactLoader.mount({
         container,
-        module: this.mod,
+        module: reactModule,
         props: { ...propsFromAngular, items },
       });
     });

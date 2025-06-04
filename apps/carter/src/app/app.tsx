@@ -1,36 +1,18 @@
-import styled from 'styled-components';
-
-const StyledApp = styled.div`
-  background-color: lightseagreen;
-  color: #333;
-  padding: 20px;
-  border-radius: 8px;
-`;
-
-export type Item = { id: number; title: string };
+import {ApiItem} from '@global-types/shared-types';
+import {ButtonsContainer, StyledApp} from './styled';
 
 type AppProps = {
   title?: string;
-  userData?: { name: string; age?: number };
-  onClick?: () => void;
-  items?: Item[];
+  items?: ApiItem[];
+  onNext?: () => void;
+  onPrev?: () => void;
 };
-export function App({title, userData, onClick, items = []}: AppProps) {
-  const handleOnCLick = () => {
-    console.log('React Carter onClick.');
-    onClick?.();
-  };
-
-  console.log('React items: ', items);
-
+export function App({title, onNext, onPrev, items = []}: AppProps) {
   return (
     <StyledApp>
-      <div onClick={handleOnCLick}>
-        <h2>React Remote 👋 Carter</h2>
-        <h3>Static props:</h3>
+      <div>
+        <h2>React Remote 👋</h2>
         <div>Title: {title}</div>
-        <div>User: <span>{userData?.name}</span></div>
-        <div>Age: <span>{userData?.age}</span></div>
       </div>
       {items?.length > 0 && <ul>
         {items.map(item => (
@@ -39,6 +21,10 @@ export function App({title, userData, onClick, items = []}: AppProps) {
           </li>
         ))}
       </ul>}
+      <ButtonsContainer>
+        <button onClick={onPrev}>Prev</button>
+        <button onClick={onNext}>Next</button>
+      </ButtonsContainer>
     </StyledApp>
   );
 }

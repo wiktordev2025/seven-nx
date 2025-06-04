@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@global-types/carter/*": ["apps/carter/*"]
+      "@global-types/carter/*": ["apps/carter/*"],
+      "@global-types/shared-types": ["libs/shared-types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

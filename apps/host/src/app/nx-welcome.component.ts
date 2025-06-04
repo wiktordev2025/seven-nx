@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <div id="welcome">
       <h1>
-        I am Angular Main 👋
+        I am Angular Home 👋
       </h1>
     </div>
   `,
