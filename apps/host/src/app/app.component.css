@@ -1,0 +1,26 @@
+.remote-menu {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  padding: 12px 20px;
+  background: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(63, 81, 181, 0.4);
+  margin-bottom: 20px;
+}
+
+.remote-menu li a {
+  color:  var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+
+.remote-menu li a:hover,
+.remote-menu li a.active {
+  background-color: var(--primary-dark);
+  box-shadow: 0 2px 8px rgba(48, 63, 159, 0.7);
+}

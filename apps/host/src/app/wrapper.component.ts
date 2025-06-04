@@ -15,11 +15,17 @@ import {FormsModule} from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div>
-      <input [(ngModel)]="filterTerm" (input)="onFilter()" placeholder="Angular local filter..." />
-      <div #reactRoot></div>
+    <div class="wrapper">
+      <input
+        [(ngModel)]="filterTerm"
+        (input)="onFilter()"
+        placeholder="Angular local filter..."
+        class="filter-input"
+      />
+      <div #reactRoot class="react-root"></div>
     </div>
   `,
+  styleUrls: ['./wrapper.component.css'],
 })
 export class WrapperComponent implements AfterViewInit, OnDestroy {
   filterTerm = '';
