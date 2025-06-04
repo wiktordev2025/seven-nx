@@ -16,7 +16,7 @@ import {FormsModule} from '@angular/forms';
   imports: [CommonModule, FormsModule],
   template: `
     <div>
-      <input [(ngModel)]="filterTerm" (input)="onFilter()" placeholder="Angular Filter..." />
+      <input [(ngModel)]="filterTerm" (input)="onFilter()" placeholder="Angular local filter..." />
       <div #reactRoot></div>
     </div>
   `,
