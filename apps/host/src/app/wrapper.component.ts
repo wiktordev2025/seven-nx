@@ -65,7 +65,8 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    const container = this.containerRef.nativeElement;
     this.sub?.unsubscribe();
-    this.reactLoader.unmount();
+    this.reactLoader.unmount(container);
   }
 }

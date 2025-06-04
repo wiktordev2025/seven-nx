@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createRoot, Root } from 'react-dom/client';
-import {ReactComponentModule, ReactProps} from '../types/react-modules';
-import {Injectable} from '@angular/core';
+import { ReactComponentModule, ReactProps } from '../types/react-modules';
+import { Injectable } from '@angular/core';
 
 export interface ReactLoaderProps<T extends ReactProps> {
   container: HTMLElement;
@@ -11,20 +11,27 @@ export interface ReactLoaderProps<T extends ReactProps> {
 
 @Injectable({ providedIn: 'root' })
 export class ReactLoader {
-  private root?: Root;
+  private roots = new WeakMap<HTMLElement, Root>();
 
   async mount<T extends ReactProps>({ container, module, props }: ReactLoaderProps<T>) {
-    this.root = createRoot(container);
-
+    let root = this.roots.get(container);
+    if (!root) {
+      root = createRoot(container);
+      this.roots.set(container, root);
+    }
     try {
-      this.root.render(React.createElement(module.default, props));
+      root.render(React.createElement(module.default, props));
     } catch (err) {
       console.error('Failed to mount React component:', err);
-      this.root.render('Error isLoading remote component.');
+      root.render('Error loading remote component.');
     }
   }
 
-  unmount() {
-    this.root?.unmount();
+  unmount(container: HTMLElement) {
+    const root = this.roots.get(container);
+    if (root) {
+      root.unmount();
+      this.roots.delete(container);
+    }
   }
 }
