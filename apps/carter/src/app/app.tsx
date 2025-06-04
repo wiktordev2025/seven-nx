@@ -7,26 +7,38 @@ const StyledApp = styled.div`
   border-radius: 8px;
 `;
 
+export type Item = { id: number; title: string };
 
 type AppProps = {
   title?: string;
   userData?: { name: string; age?: number };
   onClick?: () => void;
-}
-
-export function App({title, userData, onClick}: AppProps) {
+  items?: Item[];
+};
+export function App({title, userData, onClick, items = []}: AppProps) {
   const handleOnCLick = () => {
     console.log('React Carter onClick.');
     onClick?.();
   };
+
+  console.log('React items: ', items);
+
   return (
     <StyledApp>
       <div onClick={handleOnCLick}>
-        Hisz from React Remote  👋 Carter
-        <div>Title props: {title}</div>
+        <h2>React Remote 👋 Carter</h2>
+        <h3>Static props:</h3>
+        <div>Title: {title}</div>
         <div>User: <span>{userData?.name}</span></div>
         <div>Age: <span>{userData?.age}</span></div>
       </div>
+      {items?.length > 0 && <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            <div>{item.title}</div>
+          </li>
+        ))}
+      </ul>}
     </StyledApp>
   );
 }
