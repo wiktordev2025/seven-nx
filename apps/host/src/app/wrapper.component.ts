@@ -6,7 +6,6 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { loadRemoteModule } from '@angular-architects/module-federation';
 import * as React from 'react';
 import { createRoot, Root } from 'react-dom/client';
 
@@ -30,11 +29,8 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
     this.root.render('Loading React Component...');
 
     try {
-      const module = await loadRemoteModule({
-        remoteEntry: 'http://localhost:4202/remoteEntry.js',
-        remoteName: 'reactList',
-        exposedModule: './ReactApp',
-      });
+      const module = await import('reactList/ReactApp')
+      console.log('Importing React module:', module);
 
       const propsFromAngular = {
         title: this.title,

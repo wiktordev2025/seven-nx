@@ -68,17 +68,19 @@
       }
     },
     "serve-static": {
-      "executor": "@nx/react:module-federation-static-server",
+      "executor": "@nx/web:file-server",
       "defaultConfiguration": "production",
       "options": {
-        "serveTarget": "reactList:serve"
+        "buildTarget": "reactList:build",
+        "watch": false,
+        "port": 4202
       },
       "configurations": {
         "development": {
-          "serveTarget": "reactList:serve:development"
+          "buildTarget": "reactList:build:development"
         },
         "production": {
-          "serveTarget": "reactList:serve:production"
+          "buildTarget": "reactList:build:production"
         }
       }
     }

@@ -22,16 +22,6 @@
       }
     },
     {
-      "plugin": "@nx/rspack/plugin",
-      "options": {
-        "buildTargetName": "build",
-        "serveTargetName": "serve",
-        "previewTargetName": "preview",
-        "buildDepsTargetName": "build-deps",
-        "watchDepsTargetName": "watch-deps"
-      }
-    },
-    {
       "plugin": "@nx/eslint/plugin",
       "options": {
         "targetName": "eslint:lint"
@@ -64,17 +54,6 @@
         }
       ]
     },
-    "@nx/rspack:rspack": {
-      "inputs": [
-        "production",
-        "^production",
-        {
-          "env": "NX_MF_DEV_REMOTES"
-        }
-      ],
-      "dependsOn": ["^build"],
-      "cache": true
-    },
     "build": {
       "cache": true,
       "dependsOn": ["^build"]
@@ -103,7 +82,7 @@
         "babel": true,
         "style": "tailwind",
         "linter": "eslint",
-        "bundler": "rspack"
+        "bundler": "webpack"
       },
       "component": {
         "style": "tailwind"
