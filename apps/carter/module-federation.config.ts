@@ -1,4 +1,4 @@
-import {ModuleFederationConfig} from '@nx/module-federation';
+import {ModuleFederationConfig} from '@nx/module-federation/src/utils/models';
 
 const config: ModuleFederationConfig = {
   name: 'carter',
@@ -9,6 +9,10 @@ const config: ModuleFederationConfig = {
     'react',
     'react-dom',
   ],
+  library: {
+    type: 'module', // This enables ESM format
+    name: 'carter'
+  },
 };
 
 export default config;

@@ -1,9 +1,20 @@
-import { withModuleFederation } from '@nx/angular/module-federation';
-import config from './module-federation.config';
+import {ModuleFederationPlugin} from '@module-federation/enhanced';
 
-/**
- * DTS Plugin is disabled in Nx Workspaces as Nx already provides Typing support for Module Federation
- * The DTS Plugin can be enabled by setting dts: true
- * Learn more about the DTS Plugin here: https://module-federation.io/configure/dts.html
- */
-export default withModuleFederation(config, { dts: false });
+export default (config) => {
+  config.plugins.push(
+    new ModuleFederationPlugin({
+      name: 'host',
+      remotes: {
+        'carter': 'carter@http://localhost:5201/remoteEntry.js'
+      },
+      shared: {
+        '@angular/animations': {singleton: true, strictVersion: true},
+        '@angular/core': {singleton: true, strictVersion: true},
+        'react': {singleton: true, strictVersion: true},
+        'react-dom': {singleton: true, strictVersion: true},
+      }
+    })
+  );
+
+  return config;
+};
