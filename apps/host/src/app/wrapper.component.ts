@@ -6,13 +6,17 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import * as React from 'react';
-import { createRoot, Root } from 'react-dom/client';
+import { CommonModule } from '@angular/common';
+import { delay } from '../utils/delay';
+import { ReactLoader } from '../utils/react-loader';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule],
   template: `
     <div>
       Angular Wrapper Component around React Component
+      <div *ngIf="isLoading" class="skeleton">Loading skeleton...</div>
       <div #reactRoot></div>
     </div>
   `,
@@ -21,33 +25,34 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
   @Input() title = 'Default Title from My Host Angularr';
   @Input() someOtherData: any = { name: 'Daisy', age: 20 };
 
-  @ViewChild('reactRoot', { static: true }) containerRef!: ElementRef;
-  private root!: Root;
+  @ViewChild('reactRoot', { static: false }) containerRef!: ElementRef;
+
+  constructor(private reactLoader: ReactLoader) {}
+
+  isLoading = true;
 
   async ngAfterViewInit() {
-    this.root = createRoot(this.containerRef.nativeElement);
-    this.root.render('Loading React Component...');
+    await delay(1000);
+    if (!this.containerRef) return;
 
-    try {
-      const module = await import('carter/Module');
+    const propsFromAngular = {
+      title: this.title,
+      userData: this.someOtherData,
+    };
+    const module = await import('carter/Module');
 
-      const propsFromAngular = {
-        title: this.title,
-        userData: this.someOtherData,
-      };
+    await this.reactLoader.mount({
+      container: this.containerRef.nativeElement,
+      module,
+      props: propsFromAngular,
+    });
 
-      this.root.render(
-        React.createElement(module.default, propsFromAngular)
-      );
-    } catch (err) {
-      console.error('Failed to load React component:', err);
-      this.root.render('Error loading remote component.');
-    }
+    console.log('React component mounted with props:', propsFromAngular);
+
+    this.isLoading = false;
   }
 
   ngOnDestroy() {
-    this.root?.unmount();
+    this.reactLoader.unmount();
   }
 }
-
-

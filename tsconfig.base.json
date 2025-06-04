@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-types/list/*": ["apps/list/*"],
-      "@my-types/reactList/*": ["apps/reactList/*"],
-      "carter/Module": ["apps/carter/src/remote-entry.ts"]
+      "@global-types/carter/*": ["apps/carter/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
