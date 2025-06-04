@@ -13,7 +13,7 @@ export class ItemService {
   private readonly limit = 5;
 
   async fetchItems(): Promise<void> {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${this.page}&_limit=${this.limit}`);
+    const res = await fetch(`https://jsonplaceholder.typicode.com/comments?_page=${this.page}&_limit=${this.limit}`);
     const data: ApiItem[] = await res.json();
     this.originalItems = data;
     this.itemsSubject.next(data);
@@ -38,7 +38,7 @@ export class ItemService {
       this.itemsSubject.next(this.originalItems);
       return;
     }
-    const filtered = this.originalItems.filter(i => i.title.includes(term));
+    const filtered = this.originalItems.filter(i => i.email.includes(term));
     this.itemsSubject.next(filtered);
   }
 }

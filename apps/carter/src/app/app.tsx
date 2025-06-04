@@ -17,7 +17,7 @@ export function App({title, onNext, onPrev, items = []}: AppProps) {
       {items?.length > 0 && <StyledList>
         {items.map(item => (
           <li key={item.id}>
-            <div>{item.title}</div>
+            <div>{item.email}</div>
           </li>
         ))}
       </StyledList>}

@@ -1,1 +1,1 @@
-export type ApiItem = { id: number; title: string };
+export type ApiItem = { id: number; email: string };

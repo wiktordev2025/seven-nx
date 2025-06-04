@@ -13,7 +13,7 @@ export const StyledApp = styled.div`
 
 export const ButtonsContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 12px;
   margin-top: 20px;
 
