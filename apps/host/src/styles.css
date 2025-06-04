@@ -9,10 +9,3 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif !important;
 }
-
-:root {
-  --primary-color: #007AC2;
-  --primary-dark: #051650;
-  --text-light: #fff;
-  --shadow-color: rgba(63, 81, 181, 0.4);
-}

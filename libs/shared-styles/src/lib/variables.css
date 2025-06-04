@@ -1,0 +1,23 @@
+:root {
+  --primary-color: #007AC2;
+  --primary-dark: #051650;
+  --text-light: #fff;
+  --shadow-color: rgba(63, 81, 181, 0.4);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Typography */
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}

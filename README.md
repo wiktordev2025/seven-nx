@@ -48,7 +48,7 @@ NX MFE plugin problems caused a big delay - I tested different integrations:
 Given limited time, I focused on nx monorepo and MFE functionality.
 
 Other features would include:
-- separate storybook with @company styleguide
+- separate storybook with @company styleguide (now only css vars)
 - separate e2e tests for each app
 - customized linter
 - API & Schemas generator

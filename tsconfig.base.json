@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@global-types/carter/*": ["apps/carter/*"],
-      "@global-types/shared-types": ["libs/shared-types/src/index.ts"]
+      "@global-types/shared-types": ["libs/shared-types/src/index.ts"],
+      "@seven-nx/shared-styles": ["libs/shared-styles/src"]
     }
   },
   "exclude": ["node_modules", "tmp"]

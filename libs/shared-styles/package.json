@@ -1,0 +1,19 @@
+{
+  "name": "@seven-nx/shared-styles",
+  "version": "1.0.0",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "**/*.css",
+    "**/*.js",
+    "**/*.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.js",
+      "types": "./index.d.ts"
+    },
+    "./tokens.css": "./tokens.css"
+  }
+}

@@ -1,5 +1,5 @@
 import {ApiItem} from '@global-types/shared-types';
-import {ButtonsContainer, StyledApp} from './styled';
+import {ButtonsContainer, StyledApp, StyledList} from './styled';
 
 type AppProps = {
   title?: string;
@@ -14,13 +14,13 @@ export function App({title, onNext, onPrev, items = []}: AppProps) {
         <h2>React Remote 👋</h2>
         <div>Title: {title}</div>
       </div>
-      {items?.length > 0 && <ul>
+      {items?.length > 0 && <StyledList>
         {items.map(item => (
           <li key={item.id}>
             <div>{item.title}</div>
           </li>
         ))}
-      </ul>}
+      </StyledList>}
       <ButtonsContainer>
         <button onClick={onPrev}>Prev</button>
         <button onClick={onNext}>Next</button>
