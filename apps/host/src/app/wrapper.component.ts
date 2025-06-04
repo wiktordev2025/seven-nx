@@ -24,6 +24,9 @@ import { ReactLoader } from '../utils/react-loader';
 export class WrapperComponent implements AfterViewInit, OnDestroy {
   @Input() title = 'Default Title from My Host Angularr';
   @Input() someOtherData: any = { name: 'Daisy', age: 20 };
+  @Input() onClickHandler?: () => void = () => {
+    console.log('Default Angular click handler triggered.');
+  };
 
   @ViewChild('reactRoot', { static: false }) containerRef!: ElementRef;
 
@@ -38,6 +41,7 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
     const propsFromAngular = {
       title: this.title,
       userData: this.someOtherData,
+      onClick: this.onClickHandler,
     };
     const module = await import('carter/Module');
 
