@@ -1,0 +1,14 @@
+{
+  "name": "carter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/carter/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "options": {
+        "port": 5201
+      }
+    }
+  }
+}

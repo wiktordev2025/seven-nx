@@ -4,8 +4,12 @@ const config: ModuleFederationConfig = {
   name: 'host',
   remotes: [
     'list', // Angular remote
-    // ['reactList', 'reactList@http://localhost:4202/remoteEntry.js'], // React remote with URL
-    // 'reactList'
+    // 'carter'
+    ['carter', 'carter@http://localhost:5201/remoteEntry.js'], // React remote with URL
+  ],
+  additionalShared: [
+    'react',
+    'react-dom',
   ],
 };
 export default config;

@@ -18,7 +18,7 @@ import { createRoot, Root } from 'react-dom/client';
   `,
 })
 export class WrapperComponent implements AfterViewInit, OnDestroy {
-  @Input() title = 'Default Title from My Host Angular';
+  @Input() title = 'Default Title from My Host Angularr';
   @Input() someOtherData: any = { name: 'Daisy', age: 20 };
 
   @ViewChild('reactRoot', { static: true }) containerRef!: ElementRef;
@@ -29,7 +29,8 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
     this.root.render('Loading React Component...');
 
     try {
-      const module = await import('reactList/ReactApp')
+      const module = await import('carter/Module');
+      // const module = await import('reactList/ReactApp');
       console.log('Importing React module:', module);
 
       const propsFromAngular = {
